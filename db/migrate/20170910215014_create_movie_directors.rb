@@ -1,15 +1,14 @@
 class CreateMovieDirectors < ActiveRecord::Migration[5.1]
   def change
-    create_table :movie_directors do |t|
-      t.integer :movie_id
-      t.integer :director_id
-      t.references :movies
-      t.references :directors
+    create_table :movie_directors, :id=>false do |t|
+      t.integer :mid
+      t.integer :did
 
-      t.timestamps
     end
-    add_foreign_key :movie_directors, :movies, on_delete: :cascade, on_update: :cascade
-    add_foreign_key :movie_directors, :directors, on_delete: :cascade, on_update: :cascade
+    # add_reference :movie_directors, :movies, index:true
+    # add_reference :movie_directors, :directors, index:true
+    add_foreign_key :movie_directors, :movies, column: :mid, on_delete: :cascade, on_update: :cascade
+    add_foreign_key :movie_directors, :directors, column: :did, on_delete: :cascade, on_update: :cascade
 
   end
 end
