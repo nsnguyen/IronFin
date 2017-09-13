@@ -3,11 +3,16 @@
 module V1
   class ActorsController < ::V1::ApiController
     def index
-      # result = ActorServices::Index.new.run
-      # render json: result
 
-      result = Actor.first(1)
+      # definitely need some kind of validations..
+
+      result = ActorServices::Index.new(first_name: params[:first],
+                                        last_name: params[:last],
+                                        sex: params[:sex],
+                                        date_of_birth: params[:dob],
+                                        date_of_death: params[:dod]).run
       render json: result
+
 
     end
   end
