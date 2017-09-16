@@ -1,51 +1,19 @@
-class DirectorsController < ApplicationController
-  before_action :set_director, only: [:show, :update, :destroy]
+# frozen_string_literal: true
 
-  # GET /directors
-  def index
-    @directors = Director.all
+module V1
+  class DirectorsController < ::V1::ApiController
+    def index
 
-    render json: @directors
-  end
+      # definitely need some kind of validations..
 
-  # GET /directors/1
-  def show
-    render json: @director
-  end
+      result = DirectorServices::Index.new(first_name: params[:first],
+                                        last_name: params[:last],
+                                        date_of_birth: params[:dob],
+                                        date_of_death: params[:dod]).run
+      render json: result
 
-  # POST /directors
-  def create
-    @director = Director.new(director_params)
 
-    if @director.save
-      render json: @director, status: :created, location: @director
-    else
-      render json: @director.errors, status: :unprocessable_entity
     end
   end
-
-  # PATCH/PUT /directors/1
-  def update
-    if @director.update(director_params)
-      render json: @director
-    else
-      render json: @director.errors, status: :unprocessable_entity
-    end
-  end
-
-  # DELETE /directors/1
-  def destroy
-    @director.destroy
-  end
-
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_director
-      @director = Director.find(params[:id])
-    end
-
-    # Only allow a trusted parameter "white list" through.
-    def director_params
-      params.require(:director).permit(:id, :last, :first, :dob, :dod)
-    end
 end
+

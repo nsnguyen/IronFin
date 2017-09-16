@@ -17,7 +17,7 @@ module ActorServices
 
       result = run_query
 
-      result
+      return
 
     end
 
@@ -40,5 +40,7 @@ module ActorServices
       ActiveRecord::Base.send(:sanitize_sql, [query, first_name, first_name, last_name, last_name, sex, sex, date_of_birth, date_of_birth, date_of_death, date_of_death])
 
     end
+
   end
 end
+
