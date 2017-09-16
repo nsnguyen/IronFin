@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 20170910220256) do
 
   create_table "reviews", force: :cascade do |t|
     t.string "name", null: false
-    t.datetime "time", null: false
+    t.date "time", null: false
     t.integer "mid"
     t.integer "rating"
     t.string "comment", limit: 500
