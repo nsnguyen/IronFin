@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="50179903-f7ad-4b78-95e4-3babcd3968f0" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/IronFin.iml" afterPath="$PROJECT_DIR$/.idea/IronFin.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/v1/directors_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/v1/directors_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/v1/movie_actors_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/v1/movie_actors_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/v1/movie_directors_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/v1/movie_directors_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/v1/movie_genres_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/v1/movie_genres_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/v1/movies_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/v1/movies_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/v1/reviews_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/v1/reviews_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/director.rb" afterPath="$PROJECT_DIR$/app/models/director.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/movie.rb" afterPath="$PROJECT_DIR$/app/models/movie.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/movie_genre.rb" afterPath="$PROJECT_DIR$/app/models/movie_genre.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/review.rb" afterPath="$PROJECT_DIR$/app/models/review.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/services/actor_services/index.rb" afterPath="$PROJECT_DIR$/app/services/actor_services/index.rb" />
-    </list>
+    <list default="true" id="50179903-f7ad-4b78-95e4-3babcd3968f0" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
     <ignored path="$PROJECT_DIR$/public/system/" />
