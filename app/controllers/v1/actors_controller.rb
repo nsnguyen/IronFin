@@ -11,7 +11,7 @@ module V1
                                         date_of_birth: params[:dob],
                                         date_of_death: params[:dod]).run
 
-      V1::Actor::IndexSerializer.format_json(result)
+      render json: V1::Actor::IndexSerializer.format_json(result)
 
     end
   end
