@@ -3,7 +3,6 @@
 module V1
   class ActorsController < ::V1::ApiController
     def index
-
       # definitely need some kind of validations..
 
       result = ActorServices::Index.new(first_name: params[:first],
@@ -12,7 +11,7 @@ module V1
                                         date_of_birth: params[:dob],
                                         date_of_death: params[:dod]).run
 
-      render json: V1::Actor::IndexSerializer.format_json(result)
+      V1::Actor::IndexSerializer.format_json(result)
 
     end
   end
