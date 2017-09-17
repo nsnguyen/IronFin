@@ -17,7 +17,7 @@ module ActorServices
 
       result = run_query
 
-      return
+      result
 
     end
 

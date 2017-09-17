@@ -10,7 +10,7 @@ module V1
               firstName: actor['first'],
               lastName: actor['last'],
               gender: actor['sex'],
-              dateOfBirth: actor['dob'],
+              dateOfBirth: Date.parse(actor['dob'], '%Y/%m/%d'),
               dateOfDeath: actor['dod']
           }
         end
