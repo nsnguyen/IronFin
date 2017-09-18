@@ -10,7 +10,8 @@ module V1
               movieTitle: movie['title'],
               movieReleaseYear: movie['year'],
               movieRating: movie['rating'],
-              movieCompanyName: movie['company']
+              movieCompanyName: movie['company'],
+              movieGenre: movie['genre']
           }
         end
       end
