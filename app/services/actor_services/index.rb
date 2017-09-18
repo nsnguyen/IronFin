@@ -14,11 +14,7 @@ module ActorServices
     end
 
     def run
-
-      result = run_query
-
-      result
-
+      run_query
     end
 
     def run_query
@@ -30,17 +26,15 @@ module ActorServices
       query = <<~HEREDOC
         SELECT *
         FROM Actors a
-        WHERE (a.first = ? OR ? IS NULL)
-        AND (a.last = ? OR ? IS NULL)
-        AND (a.sex = ? OR ? IS NULL)
+        WHERE (LOWER(a.first) = LOWER(?) OR LOWER(?) IS NULL)
+        AND (LOWER(a.last) = LOWER(?) OR LOWER(?) IS NULL)
+        AND (LOWER(a.sex) = LOWER(?) OR LOWER(?) IS NULL)
         AND (a.dob = ? OR ? IS NULL)
         AND (a.dod = ? OR ? IS NULL)
       HEREDOC
 
       ActiveRecord::Base.send(:sanitize_sql, [query, first_name, first_name, last_name, last_name, sex, sex, date_of_birth, date_of_birth, date_of_death, date_of_death])
-
     end
-
   end
 end
 

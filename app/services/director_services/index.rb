@@ -11,11 +11,7 @@ module DirectorServices
     end
 
     def run
-
-      result = run_query
-
-      result
-
+      run_query
     end
 
     def run_query
@@ -27,8 +23,8 @@ module DirectorServices
       query = <<~HEREDOC
         SELECT *
         FROM Directors d
-        WHERE (d.first = ? OR ? IS NULL)
-        AND (d.last = ? OR ? IS NULL)
+        WHERE (LOWER(d.first) = LOWER(?) OR LOWER(?) IS NULL)
+        AND (LOWER(d.last) = LOWER(?) OR LOWER(?) IS NULL)
         AND (d.dob = ? OR ? IS NULL)
         AND (d.dod = ? OR ? IS NULL)
       HEREDOC

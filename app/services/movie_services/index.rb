@@ -2,20 +2,16 @@ module MovieServices
   class Index
     attr_accessor :title , :year, :rating, :company
 
-    def initialize(title: nil, year: nil, rating: nil, company: nil)
-      self.title = title
-      self.year = year
-      self.rating = rating
-      self.company = company
+    def initialize(movie_title: nil, movie_release_year: nil, movie_rating: nil, company_name: nil)
+      self.title = movie_title
+      self.year = movie_release_year
+      self.rating = movie_rating
+      self.company = company_name
 
     end
 
     def run
-
-      result = run_query
-
-      return
-
+      run_query
     end
 
     def run_query
@@ -27,7 +23,7 @@ module MovieServices
       query = <<~HEREDOC
         SELECT *
         FROM Movies m
-        WHERE (m.title = ? OR ? IS NULL)
+        WHERE (LOWER(m.title) = LOWER(?) OR LOWER(?) IS NULL)
         AND (m.year = ? OR ? IS NULL)
         AND (m.rating = ? OR ? IS NULL)
         AND (m.company = ? OR ? IS NULL)
