@@ -9,7 +9,11 @@ module V1
               firstName: director['first'],
               lastName: director['last'],
               dateOfBirth: director['dob'].present? ? Date.parse(director['dob'], '%Y/%m/%d') : nil,
-              dateOfDeath: director['dod'].present? ? Date.parse(director['dod'], '%Y/%m/%d') : nil
+              dateOfDeath: director['dod'].present? ? Date.parse(director['dod'], '%Y/%m/%d') : nil,
+              movieTitle: director['title'],
+              movieYear: director['year'],
+              movieRating: director['rating'],
+              movieCompany: director['company']
           }
         end
       end

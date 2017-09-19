@@ -26,6 +26,8 @@ module ActorServices
       query = <<~HEREDOC
         SELECT *
         FROM Actors a
+        INNER JOIN movie_actors ma ON a.id = ma.aid
+        INNER JOIN movies m on ma.mid = m.id
         WHERE (LOWER(a.first) = LOWER(?) OR LOWER(?) IS NULL)
         AND (LOWER(a.last) = LOWER(?) OR LOWER(?) IS NULL)
         AND (LOWER(a.sex) = LOWER(?) OR LOWER(?) IS NULL)

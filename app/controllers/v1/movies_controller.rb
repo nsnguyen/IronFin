@@ -8,8 +8,11 @@ module V1
         result = MovieServices::Index.new(movie_title: params[:title],
                                           movie_release_year: params[:year],
                                           movie_rating: params[:rating],
-                                          company_name: params[:company]).run
-        render json: V1::Movie::IndexSerializer.format_json(result)
+                                          company_name: params[:company],
+                                          movie_genre: params[:genre]).run
+
+        #render json: V1::Movie::IndexSerializer.format_json(result)
+        render json: result
       else
         render json: validate_params.messages(full: true)
       end
@@ -23,6 +26,7 @@ module V1
         optional(:year).filled(:int?, gteq?: 0)
         optional(:rating).filled(:str?)
         optional(:company).filled(:str?)
+        optional(:genre).filled(:str?)
       end
 
       schema.call(params)

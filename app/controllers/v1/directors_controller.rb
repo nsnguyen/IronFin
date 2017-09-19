@@ -12,7 +12,6 @@ module V1
       else
         render json: validate_params.messages(full: true)
       end
-      
     end
 
     private
