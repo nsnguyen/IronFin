@@ -38,7 +38,7 @@ module MovieServices
         AND (LOWER(mg.genre) = LOWER(?) OR LOWER(?) IS NULL)
       HEREDOC
 
-      ActiveRecord::Base.send(:sanitize_sql, [query, "%#{title}%", "%#{title}%", year, year, rating, rating, "#%{company}%", "#%{company}%", genre, genre])
+      ActiveRecord::Base.send(:sanitize_sql, [query, "%#{title}%", "%#{title}%", year, year, rating, rating, "%#{company}%", "%#{company}%", genre, genre])
     end
   end
 end
