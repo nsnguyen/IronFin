@@ -31,14 +31,14 @@ module MovieServices
         SELECT *
         FROM Movies m
         INNER JOIN movie_genres mg on m.id = mg.mid
-        WHERE (LOWER(m.title) = LOWER(?) OR LOWER(?) IS NULL)
+        WHERE (LOWER(m.title) LIKE LOWER(?) OR LOWER(?) IS NULL)
         AND (m.year = ? OR ? IS NULL)
         AND (LOWER(m.rating) = LOWER(?) OR LOWER(?) IS NULL)
-        AND (LOWER(m.company) = LOWER(?) OR LOWER(?) IS NULL)
+        AND (LOWER(m.company) LIKE LOWER(?) OR LOWER(?) IS NULL)
         AND (LOWER(mg.genre) = LOWER(?) OR LOWER(?) IS NULL)
       HEREDOC
 
-      ActiveRecord::Base.send(:sanitize_sql, [query, title, title, year, year, rating, rating, company, company, genre, genre])
+      ActiveRecord::Base.send(:sanitize_sql, [query, "%{title}%", "%{title}%", year, year, rating, rating, "%{company}%", "%{company}%", genre, genre])
     end
   end
 end

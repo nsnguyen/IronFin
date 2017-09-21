@@ -25,13 +25,13 @@ module DirectorServices
         FROM Directors d
         INNER JOIN movie_directors ma ON d.id = ma.did
         INNER JOIN movies m on ma.mid = m.id
-        WHERE (LOWER(d.first) = LOWER(?) OR LOWER(?) IS NULL)
-        AND (LOWER(d.last) = LOWER(?) OR LOWER(?) IS NULL)
+        WHERE (LOWER(d.first) LIKE LOWER(?) OR LOWER(?) IS NULL)
+        AND (LOWER(d.last) LIKE LOWER(?) OR LOWER(?) IS NULL)
         AND (d.dob = ? OR ? IS NULL)
         AND (d.dod = ? OR ? IS NULL)
       HEREDOC
 
-      ActiveRecord::Base.send(:sanitize_sql, [query, first_name, first_name, last_name, last_name, date_of_birth, date_of_birth, date_of_death, date_of_death])
+      ActiveRecord::Base.send(:sanitize_sql, [query, "%{first_name}%", "%{first_name}%", "%{last_name}%", "%{last_name}%", date_of_birth, date_of_birth, date_of_death, date_of_death])
 
     end
   end

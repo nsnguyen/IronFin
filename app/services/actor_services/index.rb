@@ -28,14 +28,14 @@ module ActorServices
         FROM Actors a
         INNER JOIN movie_actors ma ON a.id = ma.aid
         INNER JOIN movies m on ma.mid = m.id
-        WHERE (LOWER(a.first) = LOWER(?) OR LOWER(?) IS NULL)
-        AND (LOWER(a.last) = LOWER(?) OR LOWER(?) IS NULL)
+        WHERE (LOWER(a.first) LIKE LOWER(?) OR LOWER(?) IS NULL)
+        AND (LOWER(a.last) LIKE LOWER(?) OR LOWER(?) IS NULL)
         AND (LOWER(a.sex) = LOWER(?) OR LOWER(?) IS NULL)
         AND (a.dob = ? OR ? IS NULL)
         AND (a.dod = ? OR ? IS NULL)
       HEREDOC
 
-      ActiveRecord::Base.send(:sanitize_sql, [query, first_name, first_name, last_name, last_name, sex, sex, date_of_birth, date_of_birth, date_of_death, date_of_death])
+      ActiveRecord::Base.send(:sanitize_sql, [query, "%#{first_name}%", "%#{first_name}%", "%#{last_name}%", "%#{last_name}%", sex, sex, date_of_birth, date_of_birth, date_of_death, date_of_death])
     end
   end
 end
