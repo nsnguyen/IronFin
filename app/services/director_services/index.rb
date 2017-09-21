@@ -31,7 +31,7 @@ module DirectorServices
         AND (d.dod = ? OR ? IS NULL)
       HEREDOC
 
-      ActiveRecord::Base.send(:sanitize_sql, [query, "%{first_name}%", "%{first_name}%", "%{last_name}%", "%{last_name}%", date_of_birth, date_of_birth, date_of_death, date_of_death])
+      ActiveRecord::Base.send(:sanitize_sql, [query, "%#{first_name}%", "%#{first_name}%", "%#{last_name}%", "%#{last_name}%", date_of_birth, date_of_birth, date_of_death, date_of_death])
 
     end
   end
