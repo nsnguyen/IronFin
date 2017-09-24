@@ -43,11 +43,11 @@ module ActorServices
       actors.map do |actor|
       {
           'id' => actor['id'],
-          'first_name' => actor['first_name'],
-          'last_name' => actor['last_name'],
+          'first' => actor['first'],
+          'last' => actor['last'],
           'sex' => actor['sex'],
-          'date_of_birth' => actor['date_of_birth'],
-          'date_of_death' => actor['date_of_death'],
+          'dob' => actor['dob'],
+          'dod' => actor['dod'],
           'movies_acted_in' => []
       }
       end

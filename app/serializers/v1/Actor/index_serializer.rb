@@ -11,11 +11,19 @@ module V1
               gender: actor['sex'],
               dateOfBirth: actor['dob'].present? ? Date.parse(actor['dob'], '%Y/%m/%d') : nil,
               dateOfDeath: actor['dod'].present? ? Date.parse(actor['dod'], '%Y/%m/%d') : nil,
-              actorRole: actor['role'],
-              movieTitle: actor['title'],
-              movieYear: actor['year'],
-              movieRating: actor['rating'],
-              movieCompany: actor['company']
+              moviesActedIn: format_movies_json(actor['movies_acted_in'])
+          }
+        end
+      end
+
+      def self.format_movies_json(movies)
+        movies.map do |movie|
+          {
+              actorRole: movie['role'],
+              movieTitle: movie['title'],
+              movieYear: movie['year'],
+              movieRating: movie['rating'],
+              movieCompany: movie['company']
           }
         end
       end

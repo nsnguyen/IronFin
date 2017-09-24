@@ -15,7 +15,7 @@ module ActorServices
 
       actor_hashes.each do |actor_hash|
         aid = actor_hash['id']
-        actor_hash['movie'] = actors_dict[aid] || []
+        actor_hash['movies_acted_in'] = actors_dict[aid] || []
       end
     end
 
@@ -39,7 +39,12 @@ module ActorServices
     def as_hashes(movie)
       {
           'aid' => movie['aid'],
-          'movie' => movie['movie']
+          'mid' => movie['mid'],
+          'role' => movie['role'],
+          'title' => movie['title'],
+          'year' => movie['year'],
+          'rating' => movie['raiting'],
+          'company' => movie['company']
       }
     end
 
@@ -47,7 +52,9 @@ module ActorServices
     def query
       query = <<~HEREDOC
         SELECT *
-        FROM actor_movies am
+        FROM movie_actors am
+        INNER JOIN movies m
+        ON am.mid = m.id
         WHERE am.aid in (?)
       HEREDOC
 
