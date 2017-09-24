@@ -43,7 +43,7 @@ module ActorServices
           'role' => movie['role'],
           'title' => movie['title'],
           'year' => movie['year'],
-          'rating' => movie['raiting'],
+          'rating' => movie['rating'],
           'company' => movie['company']
       }
     end
