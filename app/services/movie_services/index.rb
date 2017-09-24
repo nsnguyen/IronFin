@@ -12,17 +12,41 @@ module MovieServices
     end
 
     def run
-      result = run_query
+      # get initital movies data in PG
+      movies = run_query
 
-      result
-      
-      # TODO: need to put genre into array of hashes.
+      # build movie_ids array so it can pass into second SQL query to search for genres.
+      movie_ids = movie_ids(movies)
 
-      # http://0.0.0.0:3000/v1/movies?company=Jaret%20Entertainment
+      # convert to hashes so we can add genres in easily.
+      movie_hashes = as_hashes(movies)
+
+      # pash movie_hashes as reference. Fill Genres class will append movie genres.
+      MovieServices::FillGenres.new(movie_hashes, movie_ids).run
+
+      movie_hashes
+    end
+
+    def movie_ids(movies)
+      # this is to put movie_ids into an array
+      movies.pluck('id')
     end
 
     def run_query
       @run_query ||= ActiveRecord::Base.connection.execute(query)
+    end
+
+    def as_hashes(movies)
+      movies.map do |movie|
+        {
+            'id' => movie['id'],
+            'title' => movie['title'],
+            'year' => movie['year'],
+            'rating' => movie['rating'],
+            'company' => movie['company'],
+            'genre' => []
+        }
+      end
     end
 
     # probably a good idea to use ActiveRecord but let's just do SQL query to show what we can do.
@@ -30,15 +54,13 @@ module MovieServices
       query = <<~HEREDOC
         SELECT *
         FROM Movies m
-        INNER JOIN movie_genres mg on m.id = mg.mid
         WHERE (LOWER(m.title) LIKE LOWER(?) OR LOWER(?) IS NULL)
         AND (m.year = ? OR ? IS NULL)
         AND (LOWER(m.rating) = LOWER(?) OR LOWER(?) IS NULL)
         AND (LOWER(m.company) LIKE LOWER(?) OR LOWER(?) IS NULL)
-        AND (LOWER(mg.genre) = LOWER(?) OR LOWER(?) IS NULL)
       HEREDOC
 
-      ActiveRecord::Base.send(:sanitize_sql, [query, "%#{title}%", "%#{title}%", year, year, rating, rating, "%#{company}%", "%#{company}%", genre, genre])
+      ActiveRecord::Base.send(:sanitize_sql, [query, "%#{title}%", "%#{title}%", year, year, rating, rating, "%#{company}%", "%#{company}%"])
     end
   end
 end
