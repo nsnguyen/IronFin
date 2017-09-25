@@ -10,10 +10,18 @@ module V1
               lastName: director['last'],
               dateOfBirth: director['dob'].present? ? Date.parse(director['dob'], '%Y/%m/%d') : nil,
               dateOfDeath: director['dod'].present? ? Date.parse(director['dod'], '%Y/%m/%d') : nil,
-              movieTitle: director['title'],
-              movieYear: director['year'],
-              movieRating: director['rating'],
-              movieCompany: director['company']
+              moviesDirected: format_movies_json(director['movies_directed'])
+          }
+        end
+      end
+
+      def self.format_movies_json(movies)
+        movies.map do |movie|
+          {
+              movieTitle: movie['title'],
+              movieYear: movie['year'],
+              movieRating: movie['rating'],
+              movieCompany: movie['company']
           }
         end
       end
