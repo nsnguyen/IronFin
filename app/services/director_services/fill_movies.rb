@@ -53,7 +53,7 @@ module DirectorServices
         SELECT *
         FROM movie_directors md
         INNER JOIN movies m
-        ON md.did = m.id
+        ON md.mid = m.id
         WHERE md.did in (?)
       HEREDOC
 
