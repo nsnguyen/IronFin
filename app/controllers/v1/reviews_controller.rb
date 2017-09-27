@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module V1
-  class ActorsController < ::V1::ApiController
+  class ReviewsController < ::V1::ApiController
     def index
 
       # definitely need some kind of validations..
@@ -12,7 +12,7 @@ module V1
       #                                   reviewers_rating_of_movie: params[:rating],
       #                                   comments_about_movie: params[:comment]).run
       render json: []
-      
+
     end
   end
 end
