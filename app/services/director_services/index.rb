@@ -1,13 +1,14 @@
 module DirectorServices
   class Index
-    attr_accessor :first_name , :last_name, :date_of_birth, :date_of_death, :movies_directed
+    attr_accessor :first_name , :last_name, :date_of_birth, :date_of_death, :movies_directed, :show_movies
 
-    def initialize(first_name: nil, last_name: nil, date_of_birth: nil, date_of_death: nil, movies_directed: nil)
+    def initialize(first_name: nil, last_name: nil, date_of_birth: nil, date_of_death: nil, movies_directed: nil, show_movies: true)
       self.first_name = first_name
       self.last_name = last_name
       self.date_of_birth = date_of_birth
       self.date_of_death = date_of_death
       self.movies_directed = movies_directed
+      self.show_movies = show_movies
 
     end
 
@@ -15,14 +16,16 @@ module DirectorServices
       # get initial directors data in PDG
       directors = run_query
 
-      # build directors_ids array so it can pass into second SQL query to search for genres.
-      director_ids = director_ids(directors)
-
-      # convert to hashes so we can add genres in easily.
+        # convert to hash format for readability
       director_hashes = as_hashes(directors)
 
-      # pass directors_hashes as reference. Fill Movies class will append directors genres.
-      DirectorServices::FillMovies.new(director_hashes, director_ids).run
+      if show_movies
+        # build directors_ids array so it can pass into second SQL query to search for genres.
+        director_ids = director_ids(directors)
+
+        # pass directors_hashes as reference. Fill Movies class will append directors genres.
+        DirectorServices::FillMovies.new(director_hashes, director_ids).run
+      end
 
       director_hashes
     end

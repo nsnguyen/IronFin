@@ -12,7 +12,6 @@ module V1
               dateOfBirth: actor['dob'].present? ? Date.parse(actor['dob'], '%Y/%m/%d') : nil,
               dateOfDeath: actor['dod'].present? ? Date.parse(actor['dod'], '%Y/%m/%d') : nil,
               moviesActedIn: format_movies_json(actor['movies_acted_in']),
-              showMovies: actor['movies']
           }
         end
       end
@@ -24,7 +23,7 @@ module V1
               movieTitle: movie['title'],
               movieYear: movie['year'],
               movieRating: movie['rating'],
-              movieCompany: movie['company'],
+              movieCompany: movie['company']
           }
         end
       end

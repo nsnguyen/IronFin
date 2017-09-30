@@ -20,21 +20,21 @@ module ActorServices
       # get initial actors data in PDG
       actors = run_query
 
+      # convert to hash format for readability
+      actor_hashes = as_hashes(actors)
+
+      # movies set to true will show all movies
       if show_movies
 
         # build actors_ids array so it can pass into second SQL query to search for genres.
         actor_ids = actor_ids(actors)
 
-        # convert to hashes so we can add genres in easily.
-        actor_hashes = as_hashes(actors)
-
         # pass actors_hashes as reference. Fill Movies class will append actors genres.
         ActorServices::FillMovies.new(actor_hashes, actor_ids).run
 
-        return actor_hashes
       end
 
-      actors
+      actor_hashes
     end
 
     def actor_ids(actors)
