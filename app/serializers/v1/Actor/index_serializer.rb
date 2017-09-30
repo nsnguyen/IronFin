@@ -25,7 +25,6 @@ module V1
               movieYear: movie['year'],
               movieRating: movie['rating'],
               movieCompany: movie['company'],
-              showMovies: movie['movies']
           }
         end
       end

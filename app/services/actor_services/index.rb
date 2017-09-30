@@ -4,7 +4,7 @@ module ActorServices
   class Index
     attr_accessor :first_name , :last_name, :sex, :date_of_birth, :date_of_death, :movies_acted_in, :show_movies
 
-    def initialize(first_name: nil, last_name: nil, sex: nil, date_of_birth: nil, date_of_death: nil, movies_acted_in: nil, show_movies: nil)
+    def initialize(first_name: nil, last_name: nil, sex: nil, date_of_birth: nil, date_of_death: nil, movies_acted_in: nil, show_movies: false)
       self.first_name = first_name
       self.last_name = last_name
       self.sex = sex
