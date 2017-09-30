@@ -2,32 +2,39 @@
 
 module ActorServices
   class Index
-    attr_accessor :first_name , :last_name, :sex, :date_of_birth, :date_of_death, :movies_acted_in
+    attr_accessor :first_name , :last_name, :sex, :date_of_birth, :date_of_death, :movies_acted_in, :show_movies
 
-    def initialize(first_name: nil, last_name: nil, sex: nil, date_of_birth: nil, date_of_death: nil, movies_acted_in: nil)
+    def initialize(first_name: nil, last_name: nil, sex: nil, date_of_birth: nil, date_of_death: nil, movies_acted_in: nil, show_movies: nil)
       self.first_name = first_name
       self.last_name = last_name
       self.sex = sex
       self.date_of_birth = date_of_birth
       self.date_of_death = date_of_death
       self.movies_acted_in = movies_acted_in
+      self.show_movies = show_movies
 
     end
 
     def run
+
       # get initial actors data in PDG
       actors = run_query
 
-      # build actors_ids array so it can pass into second SQL query to search for genres.
-      actor_ids = actor_ids(actors)
+      if show_movies
 
-      # convert to hashes so we can add genres in easily.
-      actor_hashes = as_hashes(actors)
+        # build actors_ids array so it can pass into second SQL query to search for genres.
+        actor_ids = actor_ids(actors)
 
-      # pass actors_hashes as reference. Fill Movies class will append actors genres.
-      ActorServices::FillMovies.new(actor_hashes, actor_ids).run
+        # convert to hashes so we can add genres in easily.
+        actor_hashes = as_hashes(actors)
 
-      actor_hashes
+        # pass actors_hashes as reference. Fill Movies class will append actors genres.
+        ActorServices::FillMovies.new(actor_hashes, actor_ids).run
+
+        return actor_hashes
+      end
+
+      actors
     end
 
     def actor_ids(actors)
@@ -36,7 +43,9 @@ module ActorServices
     end
 
     def run_query
+
       @run_query ||= ActiveRecord::Base.connection.execute(query)
+
     end
 
     def as_hashes(actors)
