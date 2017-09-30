@@ -8,7 +8,8 @@ module V1
                                           last_name: params[:last],
                                           sex: params[:sex],
                                           date_of_birth: params[:dob],
-                                          date_of_death: params[:dod]).run
+                                          date_of_death: params[:dod],
+                                          show_movies: params[:movies]).run
 
         render json: V1::Actor::IndexSerializer.format_json(result)
       else

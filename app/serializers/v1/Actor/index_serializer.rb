@@ -11,7 +11,7 @@ module V1
               gender: actor['sex'],
               dateOfBirth: actor['dob'].present? ? Date.parse(actor['dob'], '%Y/%m/%d') : nil,
               dateOfDeath: actor['dod'].present? ? Date.parse(actor['dod'], '%Y/%m/%d') : nil,
-              moviesActedIn: format_movies_json(actor['movies_acted_in'])
+              moviesActedIn: format_movies_json(actor['movies_acted_in']),
           }
         end
       end
