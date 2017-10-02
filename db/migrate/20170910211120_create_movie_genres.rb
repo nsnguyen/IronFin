@@ -8,6 +8,7 @@ class CreateMovieGenres < ActiveRecord::Migration[5.1]
     add_index :movie_genres, [:mid], using: :btree
     # add_reference :movie_genres, :movies, index:true
 
-    add_foreign_key :movie_genres, :movies ,column: :mid, on_delete: :cascade, on_update: :cascade
+    # TODO :note... this should not be removed.
+    # add_foreign_key :movie_genres, :movies ,column: :mid, on_delete: :cascade, on_update: :cascade
   end
 end

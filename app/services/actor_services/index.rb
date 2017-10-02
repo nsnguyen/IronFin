@@ -17,7 +17,7 @@ module ActorServices
 
     def run
 
-      # get initial actors data in PDG
+      # get initial actors data in PG object
       actors = run_query
 
       # convert to hash format for readability

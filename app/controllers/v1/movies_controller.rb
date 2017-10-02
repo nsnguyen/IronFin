@@ -11,8 +11,7 @@ module V1
                                           company_name: params[:company],
                                           movie_genre: params[:genre]).run
 
-        #render json: V1::Movie::IndexSerializer.format_json(result)
-        render json: result
+        render json: V1::Movie::IndexSerializer.format_json(result)
       else
         render json: validate_params.messages(full: true)
       end

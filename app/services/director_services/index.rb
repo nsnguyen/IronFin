@@ -2,7 +2,7 @@ module DirectorServices
   class Index
     attr_accessor :first_name , :last_name, :date_of_birth, :date_of_death, :movies_directed, :show_movies
 
-    def initialize(first_name: nil, last_name: nil, date_of_birth: nil, date_of_death: nil, movies_directed: nil, show_movies: true)
+    def initialize(first_name: nil, last_name: nil, date_of_birth: nil, date_of_death: nil, movies_directed: nil, show_movies: false)
       self.first_name = first_name
       self.last_name = last_name
       self.date_of_birth = date_of_birth
@@ -13,7 +13,7 @@ module DirectorServices
     end
 
     def run
-      # get initial directors data in PDG
+      # get initial directors data in PG object
       directors = run_query
 
         # convert to hash format for readability

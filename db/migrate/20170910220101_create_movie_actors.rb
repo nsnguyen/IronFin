@@ -8,8 +8,11 @@ class CreateMovieActors < ActiveRecord::Migration[5.1]
     end
     # add_reference :movie_actors, :movies#, index:true
     # add_reference :movie_actors, :actors#, index:true
-    add_foreign_key :movie_actors, :movies, column: :mid, on_delete: :cascade, on_update: :cascade
-    add_foreign_key :movie_actors, :actors, column: :aid, on_delete: :cascade, on_update: :cascade
+
+    # TODO :note... this should not be removed.
+
+    #add_foreign_key :movie_actors, :movies, column: :mid, on_delete: :cascade, on_update: :cascade
+    #add_foreign_key :movie_actors, :actors, column: :aid, on_delete: :cascade, on_update: :cascade
 
   end
 end

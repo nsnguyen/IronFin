@@ -27,33 +27,33 @@ csv.each do |row|
   t.save
 end
 
-puts 'Seeding actor2.del'
-actor2_text = File.read(Rails.root.join('lib', 'seeds', 'actor2.del'))
-csv = CSV.parse(actor2_text, :headers => false, :encoding => 'ISO-8859-1')
-csv.each do |row|
-  t = Actor.new
-  t.id = row[0]
-  t.last = row[1]
-  t.first = row[2]
-  t.sex = row[3]
-  t.dob = row[4]
-  t.dod = row[5]
-  t.save
-end
-
-puts 'Seeding actor3.del'
-actor3_text = File.read(Rails.root.join('lib', 'seeds', 'actor3.del'))
-csv = CSV.parse(actor3_text, :headers => false, :encoding => 'ISO-8859-1')
-csv.each do |row|
-  t = Actor.new
-  t.id = row[0]
-  t.last = row[1]
-  t.first = row[2]
-  t.sex = row[3]
-  t.dob = row[4]
-  t.dod = row[5]
-  t.save
-end
+# puts 'Seeding actor2.del'
+# actor2_text = File.read(Rails.root.join('lib', 'seeds', 'actor2.del'))
+# csv = CSV.parse(actor2_text, :headers => false, :encoding => 'ISO-8859-1')
+# csv.each do |row|
+#   t = Actor.new
+#   t.id = row[0]
+#   t.last = row[1]
+#   t.first = row[2]
+#   t.sex = row[3]
+#   t.dob = row[4]
+#   t.dod = row[5]
+#   t.save
+# end
+#
+# puts 'Seeding actor3.del'
+# actor3_text = File.read(Rails.root.join('lib', 'seeds', 'actor3.del'))
+# csv = CSV.parse(actor3_text, :headers => false, :encoding => 'ISO-8859-1')
+# csv.each do |row|
+#   t = Actor.new
+#   t.id = row[0]
+#   t.last = row[1]
+#   t.first = row[2]
+#   t.sex = row[3]
+#   t.dob = row[4]
+#   t.dod = row[5]
+#   t.save
+# end
 
 puts 'Seeding director.del'
 director_text = File.read(Rails.root.join('lib', 'seeds', 'director.del'))
@@ -79,16 +79,16 @@ csv.each do |row|
   t.save
 end
 
-puts 'Seeding movieactor2.del'
-movieactor2_text = File.read(Rails.root.join('lib', 'seeds', 'movieactor2.del'))
-csv = CSV.parse(movieactor2_text, :headers => false, :encoding => 'ISO-8859-1')
-csv.each do |row|
-  t = MovieActor.new
-  t.mid = row[0]
-  t.aid = row[1]
-  t.role = row[2]
-  t.save
-end
+# puts 'Seeding movieactor2.del'
+# movieactor2_text = File.read(Rails.root.join('lib', 'seeds', 'movieactor2.del'))
+# csv = CSV.parse(movieactor2_text, :headers => false, :encoding => 'ISO-8859-1')
+# csv.each do |row|
+#   t = MovieActor.new
+#   t.mid = row[0]
+#   t.aid = row[1]
+#   t.role = row[2]
+#   t.save
+# end
 
 puts 'Seeding moviedirector.del'
 moviedirector_text = File.read(Rails.root.join('lib', 'seeds', 'moviedirector.del'))

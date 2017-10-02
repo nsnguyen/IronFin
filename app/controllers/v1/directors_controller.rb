@@ -7,7 +7,8 @@ module V1
         result = DirectorServices::Index.new(first_name: params[:first],
                                              last_name: params[:last],
                                              date_of_birth: params[:dob],
-                                             date_of_death: params[:dod]).run
+                                             date_of_death: params[:dod],
+                                             show_movies: params[:movies]).run
         render json: V1::Director::IndexSerializer.format_json(result)
       else
         render json: validate_params.messages(full: true)

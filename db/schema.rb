@@ -67,10 +67,5 @@ ActiveRecord::Schema.define(version: 20170910220256) do
     t.index ["movies_id"], name: "index_reviews_on_movies_id"
   end
 
-  add_foreign_key "movie_actors", "actors", column: "aid", on_update: :cascade, on_delete: :cascade
-  add_foreign_key "movie_actors", "movies", column: "mid", on_update: :cascade, on_delete: :cascade
-  add_foreign_key "movie_directors", "directors", column: "did", on_update: :cascade, on_delete: :cascade
-  add_foreign_key "movie_directors", "movies", column: "mid", on_update: :cascade, on_delete: :cascade
-  add_foreign_key "movie_genres", "movies", column: "mid", on_update: :cascade, on_delete: :cascade
   add_foreign_key "reviews", "movies", column: "mid", on_update: :cascade, on_delete: :cascade
 end
